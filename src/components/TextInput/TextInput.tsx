@@ -3,10 +3,14 @@ import { View, TextInput } from 'react-native';
 
 import { styles } from './TextInputStyle';
 
-export function TextInputCode() {
+interface TextInputCodeProps{
+  pass:string
+}
+
+export function TextInputCode(props:TextInputCodeProps) {
   return (
     <View style={styles.inputContainer}> 
-        <TextInput style={styles.inputer} placeholder='Pass'/>
+        <TextInput style={styles.inputer} placeholder='Pass' value={props.pass}/>
     </View>
   );
 }
