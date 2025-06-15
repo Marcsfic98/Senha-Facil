@@ -5,6 +5,8 @@ import { styles } from './ButtonStyle';
 import { TextInputCode } from '../TextInput/TextInput';
 import generatePass from '../../services/passwordService';
 
+import * as Clipboard from 'expo-clipboard'
+
 export function ButtonInput() {
   
     const [pass , setPass] = useState('');
@@ -14,6 +16,10 @@ export function ButtonInput() {
       setPass(generateToken)
     }
 
+    function handleCopyButton(){
+      Clipboard.setStringAsync(pass)
+    }
+
   return (
     <View  style={styles.container}>
       <TextInputCode pass={pass}/>
@@ -21,7 +27,7 @@ export function ButtonInput() {
         <Text style={styles.button}>GENERATE</Text>
       </Pressable>
 
-        <Pressable style={styles.pressable} onPress={()=>{console.log('press')}}>
+        <Pressable style={styles.pressable} onPress={()=>{handleCopyButton()}}>
         <Text style={styles.button}>⚡COPY</Text>
       </Pressable>
     </View>
